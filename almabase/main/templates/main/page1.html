@@ -1,0 +1,55 @@
+{% extends 'main/base.html' %}
+{% block mainBlock %}
+
+<style>
+ .foo {
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 25px;
+ }
+</style>
+
+<br><br><br>
+<div class='row'>
+    <div class='clo-sm-12'>
+        <h4>1. Define Fields</h4>
+        <hr>
+        Select columns which you think tell most information about each row in your spreadsheetand how would you like to compare them.
+    </div>
+</div>
+
+<form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+<input type='text' style='visibility: hidden;' name='count' id='count' value='1'>
+<div class='main'>
+    <div class='mainChild' id='secs'>
+        <div class='row foo'>
+            <div class='col-sm-12' >
+                Field in {{ name }}<br>
+                <select name='section1' >
+                    {% for i in fields%}
+                    <option value="{{ i }}">{{ i }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+    <br><br>
+    <a onclick='addMore()' class='btn btn-success btn-long'>&#43; Add more</a>
+    <hr><br>
+    <input type='submit' class="btn btn-success btn-block">
+</form>
+
+<script type="text/javascript">
+    function addMore(){
+        foo = document.getElementsByClassName('mainChild')[0].innerHTML;
+        countInput = document.getElementById('count');
+        count = parseInt(countInput.value);
+        console.log(count)
+        countInput.value = count+=1;
+        bar = foo.split('section1')
+        document.getElementsByClassName('main')[0].innerHTML += bar[0]+"section"+count+bar[1];
+    }
+</script>
+{% endblock %}

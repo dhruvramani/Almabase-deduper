@@ -8,7 +8,7 @@
     </div>
 </div>
 
-<form method='POST'>
+<form method='POST' enctype="multipart/form-data"> {% csrf_token %}
 <div clas='row'>
     <div class='col-sm-8 form-group'>
         <p>Name : <input class='form-control' name='name' type='text' required></p>
@@ -16,7 +16,7 @@
     </div>
     <div class='col-sm-4'>
         <h4>Upload Format</h4>
-        <img src='./foo.png'>
+        <img src='https://cdn.ablebits.com/_img-blog/identify-duplicates/dedupe-table-button.png' width="75%" height="75%">
         <p>The file must contain one row for every record, with first row indicating the name of each column.</p>
     </div>
 </div>

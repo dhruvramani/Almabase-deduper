@@ -20,5 +20,7 @@ import main.views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', main.views.index, name='index'),
-    url(r'^page1/', main.views.page1, name='page1')
+    url(r'^page1/(?P<pk>[0-9]+)/', main.views.page1, name='page1'),
+    url(r'^page2/(?P<pk>[0-9]+)/', main.views.page2, name='page2'),
+    url(r'^page3/(?P<pk>[0-9]+)/', main.views.page3, name='page3'),
 ]

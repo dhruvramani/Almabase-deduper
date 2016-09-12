@@ -10,18 +10,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 BASE_DIR = os.path.dirname((os.path.dirname(os.path.abspath(__file__))))
 
-def touch(fname):
-    if os.path.exists(fname):
-        os.utime(fname, None)
-    else:
-        open(fname, 'a').close()
-
 def preProcess(column):
-    """
-    Do a little bit of data cleaning with the help of Unidecode and Regex.
-    Things like casing, extra spaces, quotes and new lines can be ignored.
-    """
-    try : # python 2/3 string differences
+    try : 
         column = column.decode('utf8')
     except AttributeError:
         pass
@@ -29,7 +19,6 @@ def preProcess(column):
     column = re.sub('  +', ' ', column)
     column = re.sub('\n', ' ', column)
     column = column.strip().strip('"').strip("'").lower().strip()
-    # If data is missing, indicate that by setting the value to `None`
     if not column:
         column = None
     return column

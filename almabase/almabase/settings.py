@@ -123,3 +123,4 @@ MEDIA_ROOT = 'data/training'
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = 'main/static'
